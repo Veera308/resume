@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Veera Guduri – SAP PI/PO & CPI Consultant</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff3e0;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #2c2c2c;
+      color: #f9f9f9;
+    }
+
+    header, footer {
+      background: #ffc107;
+      color: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .header-left {
+      flex: 1;
+      text-align: left;
+    }
+
+    .header-right {
+      flex: 1;
+      text-align: right;
+    }
+
+    #designation {
+      transition: opacity 0.8s ease-in-out;
+      display: inline-block;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    nav {
+      background: #ffa000;
+      text-align: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+  color: #000;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px; /* Makes it smooth and round */
+  transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #ffd54f;
+  color: #6a1b9a;
+  text-decoration: none;
+}
+nav a.active {
+  background-color: #ffcc80;
+}
+
+    .nav-icon {
+      margin-right: 8px;
+    }
+
+    .dark-mode-toggle {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 20px;
+      background: transparent;
+      color: #000;
+      border: none;
+    }
+
+    body.dark-mode .dark-mode-toggle {
+      color: #f9f9f9;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 20px auto;
+      background: #fff8e1;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      color: #000;
+    }
+
+    body.dark-mode section {
+      background: #424242;
+      color: #f1f1f1;
+    }
+
+    section.visible {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ffa000;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    #backToTop:hover {
+      background: #ff6f00;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .header-left, .header-right {
+        text-align: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px;
+      }
+    }
+
+    .designation-icon {
+      font-size: 18px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+	header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #ffc107;
+  color: #000;
+  padding: 20px;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  text-align: center;
+}
+
+.header-left {
+  text-align: left;
+}
+
+.header-right {
+  text-align: right;
+}
+
+.header-stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffc107;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.header-info h1,
+.header-info p {
+  margin: 10px 0;
+  color: #000;
+}
+
+.profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ffd54f, 0 0 40px #ffb300;
+}
+
+/* Optional: Resize on mobile */
+@media (max-width: 768px) {
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Dark Mode Toggle -->
+<button class="dark-mode-toggle" onclick="toggleDarkMode()">
+  <i class="fas fa-adjust"></i>
+</button>
+
+<!-- Header Section -->
+<header class="header-stacked">
+  <div class="profile-wrapper">
+    <img src="profile.jpg" alt="Veera Guduri Profile Photo" class="profile-photo">
+  </div>
+  <div class="header-info">
+    <h1><i class="fas fa-user designation-icon"></i> Veera Venkata Satyanarayana Sai Guduri</h1>
+    <p id="designation"><i class="fas fa-briefcase designation-icon"></i> Associate Consultant – SAP PI/PO</p>
+  </div>
+</header>
+<!-- Navigation -->
+<nav>
+  <a href="javascript:void(0);" onclick="showSection('home')"><i class="fas fa-home nav-icon"></i>Home</a>
+  <a href="javascript:void(0);" onclick="showSection('about')"><i class="fas fa-user nav-icon"></i>About</a>
+  <a href="javascript:void(0);" onclick="showSection('experience')"><i class="fas fa-briefcase nav-icon"></i>Experience</a>
+  <a href="javascript:void(0);" onclick="showSection('technicalskills')"><i class="fas fa-cogs nav-icon"></i>Technical Skills</a>
+  <a href="javascript:void(0);" onclick="showSection('projects')"><i class="fas fa-project-diagram nav-icon"></i>Projects</a>
+  <a href="javascript:void(0);" onclick="showSection('achievements')"><i class="fas fa-trophy nav-icon"></i>Achievements</a>
+  <a href="javascript:void(0);" onclick="showSection('contact')"><i class="fas fa-envelope nav-icon"></i>Contact</a>
+  <a href="javascript:void(0);" onclick="showSection('resume')"><i class="fas fa-file-pdf nav-icon"></i>Resume</a>
+</nav>
+
+<!-- Sections -->
+<section id="home" class="visible">
+  <h2>Welcome</h2>
+  <p>Welcome to my portfolio website! Here you can learn more about my professional background, technical expertise, and the various projects I've worked on. Feel free to explore!</p>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am an Associate Consultant with 3.5 years of experience at Infosys Limited. I specialize in SAP PI/PO and CPI, integrating SAP and non-SAP systems, designing and implementing interfaces. I am a dedicated and motivated professional, always striving for excellence in my work.</p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <ul>
+    <li><strong>Infosys Limited</strong> – Associate Consultant (2021–Present)<br/>
+      - Developed and enhanced integration interfaces using SAP PI/PO and CPI<br/>
+      - Worked with ESB, Integration Builder, SLD, and Monitoring<br/>
+      - Designed mappings, handled issue resolution, and collaborated with cross-functional teams
+    </li>
+  </ul>
+</section>
+
+<section id="technicalskills">
+  <h2>Technical Skills</h2>
+  <ul>
+    <li><strong>Integration:</strong> SAP PI/PO 7.5, SAP CPI</li>
+    <li><strong>Tools:</strong> Postman, SOAP UI, WinSCP, Service Now, JIRA</li>
+    <li><strong>Adapters:</strong> REST, SOAP, IDOC, FTP, SFTP, RFC, MAIL, JMS</li>
+	<li><strong>Palette Operation in CPI:</strong> Participants, Events, Connectors, Process,
+MessageTransformation, Routings, Content Enricher,
+Request-Reply</li>
+    <li><strong>Data Formats:</strong> XML, JSON, CSV</li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project">
+    <h3>Johnson Controls – SAP PI/PO Support & Development</h3>
+    <p>Developed pass-through interfaces for payment systems and enhanced existing ones. Applied business-driven mapping logic and ensured reliable data integration.</p>
+  </div>
+  <div class="project">
+    <h3>Valeo – SAP PI/PO Development</h3>
+    <p>AWSS3 Bucket: Built a pass-through interface to transfer files from the AL11 path to an AWS S3 bucket. Implemented AWS Signature using Java Mapping for secure integration.</p>
+  </div>
+</section>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+  <ul>
+    <li>Infosys Rise Award – For outstanding performance as a new joiner</li>
+    <li>SAP COE Rookie Champion Award – From Johnson Controls (Infosys client)</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p><i class="fas fa-envelope"></i> Email: <a href="mailto:saisatyanarayana83@gmail.com">saisatyanarayana83@gmail.com</a></p>
+  <p><i class="fas fa-phone"></i> Phone: <a href="tel:+919908039410">+91 99080 39410</a></p>
+  <p><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/veera8978" target="_blank">linkedin.com/in/veera8978</a></p>
+</section>
+
+<section id="resume">
+  <h2>My Resume</h2>
+  <iframe src="Veera_Resume.pdf" width="100%" height="600px" style="border: 1px solid #ccc;">
+    Your browser does not support iframes. You can <a href="Veera_Resume.pdf" download>download the resume here</a>.
+  </iframe>
+</section>
+
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="scrollToTop()">↑</button>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Veera Venkata Satyanarayana Sai Guduri. All rights reserved.</p>
+</footer>
+
+<script>
+  const designations = [
+    "Associate Consultant – SAP ProcessIntegration/ProcessOrchestration",
+    "Associate Consultant – SAP CloudPlatformIntegration"
+  ];
+  let index = 0;
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  function rotateDesignation() {
+    const el = document.getElementById("designation");
+    el.classList.remove("fade-in");
+    el.classList.add("fade-out");
+    setTimeout(() => {
+      el.innerHTML = '<i class="fas fa-briefcase designation-icon"></i> ' + designations[index];
+      el.classList.remove("fade-out");
+      el.classList.add("fade-in");
+      index = (index + 1) % designations.length;
+    }, 500);
+  }
+
+  function showSection(id) {
+  document.querySelectorAll("section").forEach(section => section.classList.remove("visible"));
+  document.getElementById(id).classList.add("visible");
+
+  // Highlight active navigation link
+  document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
+  const activeLink = Array.from(document.querySelectorAll("nav a"))
+    .find(link => link.textContent.toLowerCase().includes(id));
+  if (activeLink) activeLink.classList.add("active");
+}
+
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  window.onscroll = function () {
+    const btn = document.getElementById("backToTop");
+    btn.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
+  };
+
+  window.onload = function () {
+    rotateDesignation();
+    setInterval(rotateDesignation, 5000);
+  };
+</script>
+
+</body>
+</html>
